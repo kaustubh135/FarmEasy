@@ -1,5 +1,5 @@
 .banner {
-  background-image: url("../../images/cover.jfif");
+  background-image: url("../../images/pexels-ekaterina-9641601.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -10,6 +10,7 @@
   align-items: center;
   justify-content: center;
   color: white;
+  animation: change 20s infinite ease-in-out;
 }
 
 .banner > h1 {
@@ -134,5 +135,20 @@
   .productCard > div > span {
     margin: 0 0.5vmax;
     font: 300 1vmax "Roboto";
+  }
+}
+
+@keyframes change{
+  0%{
+      background-image: url(../../images/pexels-ekaterina-9641601.jpg);
+  }
+  25%{
+      background-image: url(../../images/pexels-shvets-production-7195271.jpg);
+  }
+  50%{
+      background-image: url(../../images/pexels-vanessa-loring-5965653.jpg);       
+  }
+  75%{
+      background-image: url(../../images/pexels-ylanite-koppens-2008135.jpg);
   }
 }
