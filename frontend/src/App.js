@@ -44,6 +44,8 @@ import About from "./component/layout/About/About";
 import NotFound from "./component/layout/Not Found/NotFound";
 
 axios.defaults.baseURL='http://localhost:4000/';
+axios.defaults.headers = { "Content-Type": "application/json" }
+axios.defaults.withCredentials = true;
 
 function App() {
   const { isAuthenticated, user } = useSelector((state) => state.user);

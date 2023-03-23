@@ -26,13 +26,7 @@ import axios from "axios";
 export const createOrder = (order) => async (dispatch) => {
   try {
     dispatch({ type: CREATE_ORDER_REQUEST });
-
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
-    const { data } = await axios.post("/api/v1/order/new", order, config);
+    const { data } = await axios.post("/api/v1/order/new", order);
 
     dispatch({ type: CREATE_ORDER_SUCCESS, payload: data });
   } catch (error) {
@@ -79,16 +73,9 @@ export const getAllOrders = () => async (dispatch) => {
 export const updateOrder = (id, order) => async (dispatch) => {
   try {
     dispatch({ type: UPDATE_ORDER_REQUEST });
-
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
     const { data } = await axios.put(
       `/api/v1/admin/order/${id}`,
-      order,
-      config
+      order
     );
 
     dispatch({ type: UPDATE_ORDER_SUCCESS, payload: data.success });
