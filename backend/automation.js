@@ -12,6 +12,7 @@ console.log(process.env.DB_URI);
 mongoose.connect(process.env.DB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
+  useCreateIndex: true,
 });
 
 cloudinary.config({
@@ -82,31 +83,20 @@ const initSellers = async (n) => {
 
   for (i = 0; i < n; i++) {
     const name = faker.name.fullName();
-    const myCloud = await cloudinary.v2.uploader.upload(faker.internet.avatar(), {
-    folder: "avatars",
-    width: 150,
-    crop: "scale",
-  });
   console.log({
       name: name,
       email: faker.internet.email(...name.split(' ').slice(-2)),
       password: faker.internet.password(),
-      avatar:{
-         public_id: myCloud.public_id,
-         url: myCloud.secure_url,
-      },   
+      avatar:faker.internet.avatar(),
       role: 'seller',
     });
-    // await axios.post('/register', {
-    //   name: name,
-    //   email: faker.internet.email(...name.split(' ').slice(-2)),
-    //   password: faker.internet.password(),
-    //   avatar:{
-    //      public_id: myCloud.public_id,
-    //      url: myCloud.secure_url,
-    //   },   
-    //   role: 'seller',
-    // });
+    await axios.post('/api/v1/register', {
+      name: name,
+      email: faker.internet.email(...name.split(' ').slice(-2)),
+      password: faker.internet.password(),
+      avatar:faker.internet.avatar(),
+      role: 'seller',
+    });
   }
   console.log('Added Sellers!!');
 };
