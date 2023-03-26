@@ -130,17 +130,23 @@ const initProducts = async () => {
             const arr = await getSellerId();
             for (let elements of output) {
               try {
-                const test = await CategoryModel.findOne({
-                  name: elements['Coarse Class Name (str)'],
+                const result = await cloudinary.v2.uploader.upload("."+elements['Iconic Image Path (str)'], {
+                  folder: "products",
                 });
-                const userDoc = await ProductModel.create({
-                  product_name: elements['Class Name (str)'],
-                  product_desc: elements['Product Description Path (str)'],
-                  images: [elements['Iconic Image Path (str)']],
+                obj = {
+                  name: elements['Class Name (str)'],
+                  description: elements['Product Description Path (str)'],
                   price: Math.floor(Math.random() * (300 - 50 + 1)) + 50,
-                  category_id: test._id,
-                  seller_id: arr[Math.floor(Math.random() * arr.length)],
-                });
+                  rating: Math.floor(Math.random() * (5 - 0 + 1)),
+                  images: [{
+                    public_id: result.public_id,
+                    url: result.secure_url,
+                  }],
+                category: elements['Coarse Class Name (str)'],
+                Stock: Math.floor(Math.random() * (100 - 5 + 1)) + 5,
+                user: arr[Math.floor(Math.random() * arr.length)],
+                }
+                const userDoc = await ProductModel.create(obj);
                 console.log(userDoc);
               } catch (err) {
                 console.log(err);
@@ -155,6 +161,6 @@ const initProducts = async () => {
 };
 
 // initCategory();
-initSellers(10);
-// initProducts();
+// initSellers(10);
+initProducts();
 // mongoose.connection.close()
