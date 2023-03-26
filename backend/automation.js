@@ -137,7 +137,7 @@ const initProducts = async () => {
                   name: elements['Class Name (str)'],
                   description: elements['Product Description Path (str)'],
                   price: Math.floor(Math.random() * (300 - 50 + 1)) + 50,
-                  rating: Math.floor(Math.random() * (5 - 0 + 1)),
+                  ratings: Math.floor(Math.random() * (5 - 0 + 1)),
                   images: [{
                     public_id: result.public_id,
                     url: result.secure_url,
@@ -146,6 +146,7 @@ const initProducts = async () => {
                 Stock: Math.floor(Math.random() * (100 - 5 + 1)) + 5,
                 user: arr[Math.floor(Math.random() * arr.length)],
                 }
+                console.log(obj);
                 const userDoc = await ProductModel.create(obj);
                 console.log(userDoc);
               } catch (err) {
@@ -159,8 +160,9 @@ const initProducts = async () => {
   });
   console.log('Added Products!!');
 };
-
+// 8XLZbcpdu6LP34Dc
 // initCategory();
 // initSellers(10);
 initProducts();
+
 // mongoose.connection.close()
