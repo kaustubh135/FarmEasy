@@ -1,6 +1,6 @@
 import React from "react";
 import "./aboutSection.css";
-import { Button, Typography, Avatar } from "@material-ui/core";
+import {  Typography, Avatar } from "@material-ui/core";
 import YouTubeIcon from "@material-ui/icons/YouTube";
 import logo from "../../../images/grp.jpeg";
 import InstagramIcon from "@material-ui/icons/Instagram";
