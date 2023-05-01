@@ -88,14 +88,14 @@ const initSellers = async (n) => {
       email: faker.internet.email(...name.split(' ').slice(-2)),
       password: faker.internet.password(),
       avatar:faker.internet.avatar(),
-      role: 'seller',
+      role: 'user',
     });
     await axios.post('/api/v1/register', {
       name: name,
       email: faker.internet.email(...name.split(' ').slice(-2)),
       password: faker.internet.password(),
       avatar:faker.internet.avatar(),
-      role: 'seller',
+      role: 'user',
     });
   }
   console.log('Added Sellers!!');
@@ -104,7 +104,7 @@ const initSellers = async (n) => {
 const getSellerId = async () => {
   const arr = [];
   try {
-    const result = await UserModel.find({ role: 'seller' });
+    const result = await UserModel.find({ role: 'admin' });
     for (let elements of result) {
       arr.push(elements._id);
     }
