@@ -176,7 +176,7 @@ const UpdateProduct = ({ history, match }) => {
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
               >
-                <option value="">Choose Category</option>
+                <option value="">tegory</option>
                 {categories.map((cate) => (
                   <option key={cate} value={cate}>
                     {cate}
