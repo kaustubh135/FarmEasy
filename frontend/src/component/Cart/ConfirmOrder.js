@@ -15,9 +15,9 @@ const ConfirmOrder = ({ history }) => {
     0
   );
 
-  const shippingCharges = subtotal > 1000 ? 0 : 200;
+  const shippingCharges = subtotal > 500 ? 0 : 50;
 
-  const tax = subtotal * 0.18;
+  const tax = parseFloat((subtotal * 0.18).toFixed(2));
 
   const totalPrice = subtotal + tax + shippingCharges;
 
