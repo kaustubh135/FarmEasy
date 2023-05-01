@@ -123,7 +123,7 @@ const Products = ({ match }) => {
 
             <Typography>Categories</Typography>
             <ul className="categoryBox">
-              {categories.map((category) => (
+              {/* {categories.map((category) => (
                 <li
                   className="category-link"
                   key={category}
@@ -131,7 +131,16 @@ const Products = ({ match }) => {
                 >
                   {category}
                 </li>
-              ))}
+              ))} */}
+              <select onChange={(e) => setCategory(e.target.value)}>
+                <option value="">Choose Category</option>
+                <option value="">All</option>
+                {categories.map((cate) => (
+                  <option key={cate} value={cate}>
+                    {cate}
+                  </option>
+                ))}
+              </select>
             </ul>
 
             <fieldset>
